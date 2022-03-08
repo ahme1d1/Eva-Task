@@ -1,0 +1,6 @@
+<app-header *ngIf="showHeader"></app-header>
+<ng-progress #progressBar></ng-progress>
+<div class="app-main">
+  <router-outlet> </router-outlet>
+</div>
+<app-footer *ngIf="showFooter"></app-footer>

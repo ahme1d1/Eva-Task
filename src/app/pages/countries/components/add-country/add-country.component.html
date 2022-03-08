@@ -1,0 +1,32 @@
+<h6 mat-dialog-title>Add Country</h6>
+<div mat-dialog-content>
+  <form [formGroup]="addCountryForm">
+    <mat-form-field class="w-100">
+      <input type="text" matInput placeholder="Name" formControlName="name">
+      <mat-error *ngIf="name?.hasError('required') && (name?.dirty || name?.touched)">
+        Name is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+    <button
+      class="mr-2"
+      type="button"
+      [class.spinner]="submitLoading"
+      color="primary"
+      mat-raised-button
+      mat-button
+      [disabled]="submitLoading"
+      (click)="addCountry()"
+    >
+      Add
+    </button>
+    <button
+      mat-dialog-close
+      mat-button
+      mat-raised-button
+    >
+      Cancel
+    </button>
+</div>

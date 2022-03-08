@@ -1,0 +1,9 @@
+table {
+  width: 100%;
+}
+.mat-card {
+  box-shadow: none;
+}
+.mat-row:hover > .mat-cell {
+  cursor: pointer;
+}

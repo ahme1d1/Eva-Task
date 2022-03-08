@@ -1,0 +1,49 @@
+<h6 mat-dialog-title>Update City</h6>
+<div mat-dialog-content>
+  <form [formGroup]="updateCityForm">
+    <div class="mb-3">
+      <mat-form-field class="w-100">
+        <input type="text" matInput placeholder="Name" formControlName="name">
+        <mat-error *ngIf="name?.hasError('required') && (name?.dirty || name?.touched)">
+          Name is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="mb-3" *ngIf="!countryId">
+      <mat-form-field class="w-100" >
+        <mat-label>Select country</mat-label>
+        <input type="text" matInput formControlName="country" [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+          <mat-option *ngFor="let country of filteredCountries | async" [value]="country">
+            {{country.name}}
+          </mat-option>
+        </mat-autocomplete>
+        <mat-error *ngIf="country?.hasError('required') && (country?.dirty || country?.touched)">
+          Country is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </form>
+</div>
+<div mat-dialog-actions>
+    <button
+      class="mr-2"
+      type="button"
+      [class.spinner]="submitLoading"
+      color="primary"
+      mat-raised-button
+      mat-button
+      [disabled]="submitLoading"
+      (click)="updateCity()"
+    >
+      Update
+    </button>
+    <button
+      mat-dialog-close
+      mat-button
+      mat-raised-button
+    >
+      Cancel
+    </button>
+</div>
+
